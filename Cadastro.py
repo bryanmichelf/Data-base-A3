@@ -115,6 +115,42 @@ def atualizar_visitantes(id, nome, email):
     conn.commit()
     conn.close()
 
+def consultar_expositores():
+    conn = sqlite3.connect('jornada_academica.db')
+    cursor = conn.cursor()
+
+    cursor.execute('''
+        SELECT * FROM expositor (?)
+                   ''')
+    expositores = cursor.fetchall()
+
+    conn.close()
+    return expositores
+
+def consultar_alunos_envolvidos():
+    conn = sqlite3.connect('jornada_academica.db')
+    cursor = conn.cursor()
+
+    cursor.execute('''
+        SELECT * FROM alunos_envolvidos (?)
+                    ''')
+    alunos = cursor.fetchall()
+
+    conn.close()
+    return alunos
+
+def consultar_visitantes():
+    conn = sqlite3.connect('jornada_academica.db')
+    cursor = conn.cursor()
+
+    cursor.execute('''
+        SELECT * FROM visitantes (?)
+                   ''')
+    visitantes = cursor.fetchall()
+
+    conn.close()
+    return visitantes
+
 def deletar_expositor(id):
     conn = sqlite3.connect('jornada_academica.db')
     cursor = conn.cursor()
@@ -129,7 +165,7 @@ def deletar_expositor(id):
     conn.commit()
     conn.close()
 
-def deletar_alunos_envolvido(id):
+def deletar_alunos_envolvidos(id):
     conn = sqlite3.connect('jornada_academica.db')
     cursor = conn.cursor()
 
